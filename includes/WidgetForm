@@ -1,0 +1,76 @@
+<?php
+
+namespace Modules\InformationFrame\Includes;
+
+use Zabbix\Widgets\CWidgetForm;
+use Zabbix\Widgets\Fields\{
+	CWidgetFieldIntegerBox,
+	CWidgetFieldRadioButtonList,
+	CWidgetFieldSelect,
+	CWidgetFieldTextArea
+};
+
+class WidgetForm extends CWidgetForm {
+
+	public function addFields(): self {
+		return $this
+
+			->addField(
+				(new CWidgetFieldTextArea(
+					'text',
+					_('Text')
+				))->setDefault('')
+			)
+
+			->addField(
+				(new CWidgetFieldIntegerBox(
+					'text_size',
+					_('Font size'),
+					1,
+					500
+				))->setDefault(100)
+			)
+
+			->addField(
+				(new CWidgetFieldRadioButtonList(
+					'text_alignment',
+					_('Alignment'),
+					[
+						0 => _('Left'),
+						1 => _('Center'),
+						2 => _('Right')
+					]
+				))->setDefault(1)
+			)
+
+			->addField(
+				(new CWidgetFieldSelect(
+					'text_font_style',
+					_('Font style'),
+					[
+						0 => _('Regular'),
+						1 => _('Bold'),
+						2 => _('Italic'),
+						3 => _('Bold italic')
+					]
+				))->setDefault(0)
+			)
+
+			->addField(
+				(new CWidgetFieldSelect(
+					'text_font',
+					_('Font'),
+					[
+						0 => _('Default'),
+						1 => 'Arial',
+						2 => 'Verdana',
+						3 => 'Tahoma',
+						4 => 'Trebuchet MS',
+						5 => 'Georgia',
+						6 => 'Times New Roman',
+						7 => 'Courier New'
+					]
+				))->setDefault(0)
+			);
+	}
+}
