@@ -1,0 +1,6 @@
+.dashboard-widget-information_widget .information-frame-text {
+	white-space: pre-wrap;
+	word-break: break-word;
+	width: 100%;
+	height: 100%;
+}
