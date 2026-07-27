@@ -1,0 +1,61 @@
+<?php declare(strict_types = 0);
+
+/**
+ * Information widget view.
+ *
+ * @var CView $this
+ * @var array $data
+ */
+
+$font_family = [
+	0 => 'inherit',
+	1 => 'Arial, sans-serif',
+	2 => 'Verdana, sans-serif',
+	3 => 'Tahoma, sans-serif',
+	4 => '"Trebuchet MS", sans-serif',
+	5 => 'Georgia, serif',
+	6 => '"Times New Roman", serif',
+	7 => '"Courier New", monospace'
+];
+
+$text_align = [
+	0 => 'left',
+	1 => 'center',
+	2 => 'right'
+];
+
+$font_weight = 'normal';
+$font_style = 'normal';
+
+switch ($data['text_font_style']) {
+	case 1:
+		$font_weight = 'bold';
+		break;
+
+	case 2:
+		$font_style = 'italic';
+		break;
+
+	case 3:
+		$font_weight = 'bold';
+		$font_style = 'italic';
+		break;
+}
+
+$content = (new CDiv($data['text']))
+	->addClass('information-frame-text')
+	->setAttribute(
+		'style',
+		sprintf(
+			'font-size:%d%%;text-align:%s;font-family:%s;font-weight:%s;font-style:%s;',
+			$data['text_size'],
+			$text_align[$data['text_alignment']] ?? 'left',
+			$font_family[$data['text_font']] ?? 'inherit',
+			$font_weight,
+			$font_style
+		)
+	);
+
+(new CWidgetView($data))
+	->addItem($content)
+	->show();
