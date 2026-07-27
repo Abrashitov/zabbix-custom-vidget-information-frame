@@ -1,0 +1,24 @@
+<?php declare(strict_types = 0);
+
+namespace Modules\InformationFrame\Includes;
+
+/**
+ * Information Widget constants.
+ */
+class WidgetConstants {
+
+	/*
+	 * Horizontal alignment.
+	 */
+	public const POSITION_LEFT = 0;
+	public const POSITION_CENTER = 1;
+	public const POSITION_RIGHT = 2;
+
+	/*
+	 * Font size.
+	 */
+	public const SIZE_PERCENT_MIN = 1;
+	public const SIZE_PERCENT_MAX = 500;
+
+	public const DEFAULT_TEXT_SIZE = 100;
+}
