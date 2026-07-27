@@ -1,0 +1,42 @@
+<?php declare(strict_types = 0);
+
+/**
+ * Information widget form view.
+ *
+ * @var CView $this
+ * @var array $data
+ */
+
+$form = new CWidgetFormView($data);
+
+$text_size = $form->registerField(
+	new CWidgetFieldIntegerBoxView($data['fields']['text_size'])
+);
+
+$form
+	->addField(
+		(new CWidgetFieldTextAreaView($data['fields']['text']))
+			->setAdaptiveWidth(ZBX_TEXTAREA_BIG_WIDTH - 30)
+	)
+
+	->addItem([
+		$text_size->getLabel(),
+		(new CFormField([
+			$text_size->getView(),
+			'%'
+		]))->addClass('field-size')
+	])
+
+	->addField(
+		new CWidgetFieldRadioButtonListView($data['fields']['text_alignment'])
+	)
+
+	->addField(
+		new CWidgetFieldSelectView($data['fields']['text_font_style'])
+	)
+
+	->addField(
+		new CWidgetFieldSelectView($data['fields']['text_font'])
+	)
+
+	->show();
